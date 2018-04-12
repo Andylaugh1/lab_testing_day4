@@ -18,5 +18,20 @@ end
 
 def remove_friend(person, old_friend)
   person[:friends].delete(old_friend)
-  return person[:friends]
+end
+
+def total_money(person_array)
+    money = 0
+    for person in person_array
+      money += person[:monies]
+    end
+    return money
+end
+
+def lend_money(lender, lendee, amount)
+  #take lender, reduce lender balance, give amount, increase lendee balance
+  # lendee[:monies].push(amount)
+  lender[:monies] -= amount
+  lendee[:monies] += amount# lendee[:monies] + amount
+
 end

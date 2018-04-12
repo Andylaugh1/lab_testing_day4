@@ -91,30 +91,46 @@ class TestFriends < MiniTest::Test
   # (hint: This function should not return anything. After the function call, check for the length of the friends array to test it!)
 
   def test_add_new_friend
-    result = add_new_friend(@person2, "Eilidh")
-    assert_equal(["Keith", "Eilidh"], result)
+    add_new_friend(@person2, "Eilidh")
+    result = @person2[:friends].length
+    assert_equal(2, result)
   end
 
 
   # 5. For a given person, remove a specific name from their list of friends
   # (hint: Same as above, testing for the length of the array should be sufficient)
   def test_remove_friend
-      result = remove_friend(@person1, "Val")
-      assert_equal(["Jay","Keith","Dave"], result)
+      remove_friend(@person1, "Val")
+      result = @person1[:friends].length
+      assert_equal(3, result)
   end
 
   # 6. Find the total of everyone's money
   # (hint: use the @people array, remember how we checked the total number of eggs yesterday?)
-
+   def test_total_everyone_money
+      result = total_money(@people)
+      assert_equal(143,result)
+   end
 
   # 7. For two given people, allow the first person to loan a given value of money to the other
   # (hint: our function will probably need 3 arguments passed to it... the lender, the lendee, and the amount for this function)
   # (hint2: You should test if both the lender's and the lendee's money have changed, maybe two assertions?)
+  def test_borrow_money_from_lender
+     lend_money(@person5, @person1, 20)
+     lender_money =  @person5[:monies]
+     lendee_money = @person1[:monies]
+     assert_equal(80, lender_money)
+     assert_equal(21, lendee_money)
+  end
+
 
 
   # 8. Find the set of everyone's favourite food joined together
-  # (hint: concatenate the favourites/things_to_eat arrays together)
-
+#   # (hint: concatenate the favourites/things_to_eat arrays together)
+# def test_join_favourite_foods
+#   result = food_joined
+# end
+#
 
   # 9. Find people with no friends
   # (hint: return an array, there might be more people in the future with no friends!)
