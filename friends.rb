@@ -7,7 +7,16 @@ def get_tv_show(person)
 end
 
 def likes_to_eat(person, food)
-  if @person1[:favourites][:things_to_eat][0] == food
+  if person[:favourites][:things_to_eat][0] == food
     return true
   end
+end
+
+def add_new_friend(person, new_friend)
+  person[:friends].push(new_friend)
+end
+
+def remove_friend(person, old_friend)
+  person[:friends].delete(old_friend)
+  return person[:friends]
 end
