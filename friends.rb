@@ -29,9 +29,14 @@ def total_money(person_array)
 end
 
 def lend_money(lender, lendee, amount)
-  #take lender, reduce lender balance, give amount, increase lendee balance
-  # lendee[:monies].push(amount)
   lender[:monies] -= amount
   lendee[:monies] += amount# lendee[:monies] + amount
+end
 
+def join_foods(person_array)
+  total_food = []
+  for person in person_array
+    total_food.concat(person[:favourites][:things_to_eat])
+  end
+  return total_food
 end
